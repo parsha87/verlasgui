@@ -74,15 +74,16 @@ export default function VendorList() {
             width: 120,
             getActions: (params) => [
                 <GridActionsCellItem
-                    icon={<Edit />}
+                    icon={<Edit sx={{ color: 'blue' }}/>}
                     label="Edit"
+                    showInMenu={false}
                     onClick={() => navigate(`/vendor-form/${params.id}`)}
                 />,
                 <GridActionsCellItem
-                    icon={<Delete />}
+                    icon={<Delete sx={{ color: 'red' }} />}
                     label="Delete"
                     onClick={() => setDeleteId(Number(params.id))}
-                    showInMenu
+                    showInMenu={false}
                 />,
             ],
         },

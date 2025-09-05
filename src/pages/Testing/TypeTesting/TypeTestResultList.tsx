@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Box, Button, IconButton, Dialog, DialogTitle, DialogContent,
+  Box, Button, Dialog, DialogTitle, DialogContent,
   DialogActions, Typography
 } from '@mui/material';
 import {
@@ -11,7 +11,7 @@ import { useSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
 import api from '../../../contexts/AxiosContext';
 
-export default function RoutineTestResultList() {
+export default function TypeTestResultList() {
   const [data, setData] = useState([]);
   const { enqueueSnackbar } = useSnackbar();
   const [openConfirm, setOpenConfirm] = useState(false);
@@ -20,7 +20,7 @@ export default function RoutineTestResultList() {
 
   const fetchData = async () => {
     try {
-      const res = await api.get('/routinetestresults');
+      const res = await api.get('/typetestingresults');
       setData(res.data);
     } catch {
       enqueueSnackbar('Failed to fetch data', { variant: 'error' });
@@ -33,7 +33,7 @@ export default function RoutineTestResultList() {
 
   const handleDelete = async () => {
     try {
-      await api.delete(`/routinetestresults/${deleteId}`);
+      await api.delete(`/typetestingresults/${deleteId}`);
       enqueueSnackbar('Deleted successfully', { variant: 'success' });
       fetchData();
     } catch {
@@ -43,35 +43,45 @@ export default function RoutineTestResultList() {
   };
 
   const columns: GridColDef[] = [
-    { field: 'id', headerName: 'ID', width: 90 },
-    { field: 'serialNumber', headerName: 'Serial Number', width: 150 },
-    { field: 'resistance1', headerName: 'Resistance 1', width: 130 },
-    { field: 'resistance2', headerName: 'Resistance 2', width: 130 },
-    { field: 'resistance3', headerName: 'Resistance 3', width: 130 },
-    { field: 'rAvg', headerName: 'R Avg', width: 100 },
-    { field: 'resistanceStatus', headerName: 'Pass/Fail', width: 120 },
+    { field: 'id', headerName: 'ID', width: 80 },
+    { field: 'sku', headerName: 'SKU', width: 150 },
+    { field: 'noLoadCurrentAvg', headerName: 'No Load Current Avg', width: 180 },
+    { field: 'fullLoadCurrentAvg', headerName: 'Full Load Current Avg', width: 200 },
+    { field: 'motorEfficiency', headerName: 'Efficiency', width: 150 },
+    { field: 'powerFactor', headerName: 'Power Factor', width: 150 },
+    { field: 'createdBy', headerName: 'Created By', width: 150 },
     {
-      field: 'actions', headerName: 'Actions', type: 'actions', width: 120,
+      field: 'actions',
+      headerName: 'Actions',
+      type: 'actions',
+      width: 120,
       getActions: (params) => [
         <GridActionsCellItem
-          icon={<Edit sx={{ color: 'blue' }}/>} label="Edit"
-          onClick={() => navigate(`/routine-testing/edit/${params.id}`)}
+          icon={<Edit sx={{ color: 'blue' }}/>}
+          label="Edit"
+          onClick={() => navigate(`/type-testing/${params.id}`)}
         />,
         <GridActionsCellItem
-          icon={<Delete sx={{ color: 'red' }}/>} label="Delete" onClick={() => {
+          icon={<Delete sx={{ color: 'red' }}/>}
+          label="Delete"
+          onClick={() => {
             setDeleteId(Number(params.id));
             setOpenConfirm(true);
           }}
-        />
-      ]
-    }
+        />,
+      ],
+    },
   ];
 
   return (
     <Box p={3}>
       <Box display="flex" justifyContent="space-between" mb={2}>
-        <Typography variant="h5">Routine Test Results</Typography>
-        <Button variant="contained" startIcon={<Add />} onClick={() => navigate('/routine-testing/add')}>
+        <Typography variant="h5">Type Test Results</Typography>
+        <Button
+          variant="contained"
+          startIcon={<Add />}
+          onClick={() => navigate('/type-testing/add')}
+        >
           Add New
         </Button>
       </Box>

@@ -11,7 +11,7 @@ import ElectricalDesignMaster from './pages/Master/ElectricalDesign/ElectricalDe
 import MechanicalDataMaster from './pages/Master/MechinicalData/MechanicalDataList';
 import RoutineTestDataMaster from './pages/Master/RoutineTestData/RoutineTestDataList';
 import RoutineTesting from './pages/Testing/RoutineTesting/RoutineTestResultList';
-import TypeTesting from './pages/Testing/TypeTesting';
+import TypeTesting from './pages/Testing/TypeTesting/TypeTesting';
 import GenerateInvoice from './pages/Reports/GenerateInvoice';
 import GeneratePO from './pages/Reports/GeneratePO';
 import GenerateRoutineTestCertificate from './pages/Reports/RoutineTestCertificate';
@@ -30,6 +30,8 @@ import RoutineTestDataList from './pages/Master/RoutineTestData/RoutineTestDataL
 import RoutineTestDataForm from './pages/Master/RoutineTestData/RoutineTestDataForm';
 import RoutineTestResultList from './pages/Testing/RoutineTesting/RoutineTestResultList';
 import RoutineTestResultForm from './pages/Testing/RoutineTesting/RoutineTestResultForm';
+import SkuMasterPage from './pages/Master/SkuMaster/SkuMasterPage';
+import TypeTestResultList from './pages/Testing/TypeTesting/TypeTestResultList';
 
 const App = () => {
   return (
@@ -43,6 +45,8 @@ const App = () => {
         <Route element={<PrivateRoute />}>
           <Route element={<MainLayout />}>
             <Route path="/dashboard" element={<Dashboard />} />
+
+            <Route path="/skumaster" element={<SkuMasterPage />} />
             {/* CUSTOMER */}
             <Route path="/customer" element={<CustomerList />} />
             <Route path="/customer/add" element={<CustomerForm />} />
@@ -68,7 +72,10 @@ const App = () => {
             <Route path="/routine-testing/add" element={<RoutineTestResultForm />} />
             <Route path="/routine-testing/edit/:id" element={<RoutineTestResultForm />} />
 
-            <Route path="/type-testing" element={<TypeTesting />} />
+            <Route path="/type-testing" element={<TypeTestResultList />} />
+            <Route path="/type-testing/add" element={<TypeTesting />} />
+            <Route path="/type-testing/:id" element={<TypeTesting />} />
+
             <Route path="/generate-invoice" element={<GenerateInvoice />} />
             <Route path="/generate-po" element={<GeneratePO />} />
             <Route path="/routine-test-certificate" element={<GenerateRoutineTestCertificate />} />

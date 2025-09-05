@@ -33,14 +33,14 @@ const Login = () => {
         setLoading(true);
 
         try {
-            const res = await api.post('/users/login', { email, password });
-            const { token, user } = res.data;
+            const res = await api.post('/auth/login', { email, password });
+            const { access_token, user } = res.data;
 
-            localStorage.setItem('token', token);
+            localStorage.setItem('access_token', access_token);
             localStorage.setItem('user', JSON.stringify(user));
 
             
-            sessionStorage.setItem('token', token);
+            sessionStorage.setItem('access_token', access_token);
             sessionStorage.setItem('user', JSON.stringify(user));
 
 

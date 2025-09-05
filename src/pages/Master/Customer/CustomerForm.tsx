@@ -17,12 +17,12 @@ const defaultCustomer = {
   id: 0,
   customerCode: '',
   customerType: 'Domestic',
-  customerCategory: '',
+  customerCategory: 'Trader',
   customerName: '',
   addressField1: '',
   addressField2: '',
   nearbyLandmark: '',
-  cityTaluka: '',
+  city:'',
   state: '',
   countryCode: '',
   country: '',
@@ -35,7 +35,7 @@ const defaultCustomer = {
   gstNo: '',
   paymentTerms: '',
   freightTerms: '',
-  billingCurrency: '',
+  billingCurrency: 'INR',
   creditLock: 'Open',
 };
 
@@ -120,7 +120,7 @@ export default function CustomerForm() {
               <Grid container spacing={2}>
                 {renderField('Customer Code', 'customerCode')}
                 {renderField('Customer Type', 'customerType', ['Domestic', 'International'])}
-                {renderField('Customer Category', 'customerCategory')}
+                {renderField('Customer Category', 'customerCategory', ['Trader', 'OEM', 'End User'])}
                 {renderField('Customer Name', 'customerName')}
                 {renderField('GST No', 'gstNo')}
               </Grid>
@@ -139,7 +139,7 @@ export default function CustomerForm() {
                 {renderField('Address Line 1', 'addressField1')}
                 {renderField('Address Line 2', 'addressField2')}
                 {renderField('Nearby Landmark', 'nearbyLandmark')}
-                {renderField('City/Taluka', 'cityTaluka')}
+                {renderField('City', 'city')}
                 {renderField('State', 'state')}
                 {renderField('Country Code', 'countryCode')}
                 {renderField('Country', 'country')}
@@ -177,7 +177,7 @@ export default function CustomerForm() {
               <Grid container spacing={2}>
                 {renderField('Payment Terms', 'paymentTerms')}
                 {renderField('Freight Terms', 'freightTerms')}
-                {renderField('Billing Currency', 'billingCurrency')}
+                {renderField('Billing Currency', 'billingCurrency', ['INR', 'USD'])}
                 {renderField('Credit Lock', 'creditLock', ['Open', 'Locked'])}
               </Grid>
             </CardContent>

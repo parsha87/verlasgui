@@ -21,6 +21,7 @@ export interface MechanicalData {
   coolingType: string;
   shaftDe: string;
   shaftNde: string;
+  description: string;
   encoderMountingArrgt: string;
   brakeMountingArrgt: string;
   brakeType: string;
@@ -38,7 +39,7 @@ export default function MechanicalDataList() {
 
   const fetchData = async () => {
     try {
-      const res = await api.get('/mechanicaldesigns');
+      const res = await api.get('/mechanicaldesignmaster');
       setData(res.data);
     } catch {
       enqueueSnackbar('Failed to load data', { variant: 'error' });
@@ -52,7 +53,7 @@ export default function MechanicalDataList() {
   const handleDelete = async (id: number) => {
     if (!window.confirm('Delete this record?')) return;
     try {
-      await api.delete(`/mechanicaldesigns/${id}`);
+      await api.delete(`/mechanicaldesignmaster/${id}`);
       enqueueSnackbar('Deleted successfully', { variant: 'success' });
       fetchData();
     } catch {
@@ -70,10 +71,10 @@ export default function MechanicalDataList() {
       field: 'actions',
       type: 'actions',
       headerName: 'Actions',
-      width: 100,
+      width: 120,
       getActions: (params) => [
-        <GridActionsCellItem icon={<Edit />} label="Edit" onClick={() => navigate(`/mechanical-data/${params.id}`)} />,
-        <GridActionsCellItem icon={<Delete />} label="Delete" onClick={() => handleDelete(Number(params.id))} showInMenu />
+        <GridActionsCellItem icon={<Edit sx={{ color: 'blue' }}/>} label="Edit" onClick={() => navigate(`/mechanical-data/${params.id}`)} showInMenu={false}/>,
+        <GridActionsCellItem icon={<Delete sx={{ color: 'red' }}/>} label="Delete" onClick={() => handleDelete(Number(params.id))} showInMenu={false} />
       ]
     }
   ];

@@ -61,15 +61,15 @@ export default function CustomerList() {
       field: 'actions',
       headerName: 'Actions',
       type: 'actions',
-      width: 100,
+  width: 120,
       getActions: (params) => [
         <GridActionsCellItem
-          icon={<Edit />}
+          icon={<Edit sx={{ color: 'blue' }}/>}
           label="Edit"
           onClick={() => navigate(`/customer/edit/${params.row.id}`)}
         />,
         <GridActionsCellItem
-          icon={<Delete />}
+          icon={<Delete sx={{ color: 'red' }}/>}
           label="Delete"
           onClick={() => handleDelete(params.row.id)}
         />,

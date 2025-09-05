@@ -16,7 +16,7 @@ import MechanicalDataMaster from '../pages/Master/MechinicalData/MechanicalDataL
 import RoutineTestDataMaster from '../pages/Master/RoutineTestData/RoutineTestDataList';
 
 import RoutineTesting from '../pages/Testing/RoutineTesting/RoutineTestResultList';
-import TypeTesting from '../pages/Testing/TypeTesting';
+import TypeTesting from '../pages/Testing/TypeTesting/TypeTesting';
 
 import GenerateInvoice from '../pages/Reports/GenerateInvoice';
 import GeneratePO from '../pages/Reports/GeneratePO';

@@ -123,6 +123,8 @@ const Sidebar = () => {
           </ListItemButton>
           <Collapse in={openMaster} timeout="auto" unmountOnExit>
             {[
+
+              ['SKU Master', '/skumaster', <PeopleIcon />],
               ['Customer Master', '/customer', <PeopleIcon />],
               ['Vendor Master', '/vendor', <StoreIcon />],
               ['Electrical Design Master', '/electrical-design', <ElectricBoltIcon />],

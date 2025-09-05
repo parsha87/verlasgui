@@ -24,7 +24,7 @@ const defaultVendor = {
   addressField1: '',
   addressField2: '',
   nearbyLandmark: '',
-  cityTaluka: '',
+  city: '',
   state: '',
   countryCode: '',
   country: '',
@@ -38,7 +38,7 @@ const defaultVendor = {
   paymentTerms: '',
   freightTerms: '',
   billingCurrency: '',
-  lock: 'Open',
+  lockStatus: 'Open',
 };
 
 export default function VendorForm() {
@@ -100,7 +100,17 @@ export default function VendorForm() {
               <TextField fullWidth label="Vendor Type" value={form.vendorType} onChange={(e) => handleChange('vendorType', e.target.value)} />
             </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
-              <TextField fullWidth label="Vendor Category" value={form.vendorCategory} onChange={(e) => handleChange('vendorCategory', e.target.value)} />
+              <TextField
+                fullWidth
+                select
+                label="Vendor Category"
+                value={form.vendorCategory}
+                onChange={(e) => handleChange('vendorCategory', e.target.value)}
+              >
+                <MenuItem value="A">A</MenuItem>
+                <MenuItem value="B">B</MenuItem>
+                <MenuItem value="C">C</MenuItem>
+              </TextField>
             </Grid>
           </Grid>
         </CardContent>
@@ -120,7 +130,7 @@ export default function VendorForm() {
               <TextField fullWidth label="Nearby Landmark" value={form.nearbyLandmark} onChange={(e) => handleChange('nearbyLandmark', e.target.value)} />
             </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
-              <TextField fullWidth label="City/Taluka" value={form.cityTaluka} onChange={(e) => handleChange('cityTaluka', e.target.value)} />
+              <TextField fullWidth label="City" value={form.city} onChange={(e) => handleChange('city', e.target.value)} />
             </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
               <TextField fullWidth label="State" value={form.state} onChange={(e) => handleChange('state', e.target.value)} />
@@ -175,10 +185,18 @@ export default function VendorForm() {
               <TextField fullWidth label="Freight Terms" value={form.freightTerms} onChange={(e) => handleChange('freightTerms', e.target.value)} />
             </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
-              <TextField fullWidth label="Billing Currency" value={form.billingCurrency} onChange={(e) => handleChange('billingCurrency', e.target.value)} />
-            </Grid>
+              <TextField
+                fullWidth
+                select
+                label="Billing Currency"
+                value={form.billingCurrency}
+                onChange={(e) => handleChange('billingCurrency', e.target.value)}
+              >
+                <MenuItem value="INR">INR</MenuItem>
+                <MenuItem value="USD">USD</MenuItem>
+              </TextField>            </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
-              <TextField fullWidth select label="Lock" value={form.lock} onChange={(e) => handleChange('lock', e.target.value)}>
+              <TextField fullWidth select label="Lock" value={form.lockStatus} onChange={(e) => handleChange('lockStatus', e.target.value)}>
                 <MenuItem value="Open">Open</MenuItem>
                 <MenuItem value="Locked">Locked</MenuItem>
               </TextField>

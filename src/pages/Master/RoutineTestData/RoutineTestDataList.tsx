@@ -14,7 +14,8 @@ interface RoutineTestData {
   noLoadCurrentMax: string;
   lockedRotorVoltageMin: string;
   lockedRotorVoltageMax: string;
-  resistancePerPhase: string;
+  resistancePerPhaseMin: string;
+  resistancePerPhaseMax: string;
 }
 
 export default function RoutineTestDataList() {
@@ -24,7 +25,7 @@ export default function RoutineTestDataList() {
 
   const fetchData = async () => {
     try {
-      const res = await api.get('/routine-tests');
+      const res = await api.get('/routinetestmaster');
       setData(res.data);
     } catch {
       enqueueSnackbar('Failed to fetch data', { variant: 'error' });
@@ -38,7 +39,7 @@ export default function RoutineTestDataList() {
   const handleDelete = async (id: number) => {
     if (!window.confirm('Are you sure you want to delete this record?')) return;
     try {
-      await api.delete(`/routine-tests/${id}`);
+      await api.delete(`/routinetestmaster/${id}`);
       enqueueSnackbar('Deleted successfully', { variant: 'success' });
       fetchData();
     } catch {
@@ -57,10 +58,20 @@ export default function RoutineTestDataList() {
       field: 'actions',
       headerName: 'Actions',
       type: 'actions',
-      width: 100,
+      width: 120,
       getActions: (params) => [
-        <GridActionsCellItem icon={<Edit />} label="Edit" onClick={() => navigate(`/routine-test-data/${params.id}`)} />,
-        <GridActionsCellItem icon={<Delete />} label="Delete" onClick={() => handleDelete(Number(params.id))} showInMenu />
+        <GridActionsCellItem
+          icon={<Edit sx={{ color: 'blue' }}/>}
+          label="Edit"
+          onClick={() => navigate(`/routine-test-data/${params.id}`)}
+          showInMenu={false} // <--- force inline
+        />,
+        <GridActionsCellItem
+          icon={<Delete sx={{ color: 'red' }}/>}
+          label="Delete"
+          onClick={() => handleDelete(Number(params.id))}
+          showInMenu={false} // <--- force inline
+        />,
       ],
     },
   ];

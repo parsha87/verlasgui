@@ -40,7 +40,8 @@ interface ElectricalDesign {
   mainWindingWireSize1: string;
   strandsMainWireSize1: string;
   strandsMainWireSize2: string;
-  resistancePerPhase: string;
+  resistancePerPhaseMin: string;
+  resistancePerPhaseMax: string;
   typeOfWinding: string;
   efficiencyStd: string;
   efficiencyNamePlate: string;
@@ -69,7 +70,7 @@ export default function ElectricalDesignList() {
 
   const fetchData = async () => {
     try {
-      const res = await api.get('/electricaldesigns');
+      const res = await api.get('/electricaldesignmaster');
       setRows(res.data);
     } catch (error) {
       enqueueSnackbar('Failed to fetch data', { variant: 'error' });
@@ -83,7 +84,7 @@ export default function ElectricalDesignList() {
   const handleDelete = async (id: number) => {
     if (!window.confirm('Are you sure you want to delete this item?')) return;
     try {
-      await api.delete(`/electricaldesigns/${id}`);
+      await api.delete(`/electricaldesignmaster/${id}`);
       enqueueSnackbar('Deleted successfully', { variant: 'success' });
       fetchData();
     } catch (error) {
@@ -107,15 +108,16 @@ export default function ElectricalDesignList() {
       width: 120,
       getActions: (params) => [
         <GridActionsCellItem
-          icon={<Edit />}
+          icon={<Edit sx={{ color: 'blue' }}/>}
           label="Edit"
-          onClick={() => navigate(`/electrical-design/form/${params.id}`)}
+          showInMenu={false}
+          onClick={() => navigate(`/electrical-design/form/${params.id}`) }
         />,
         <GridActionsCellItem
-          icon={<Delete />}
+          icon={<Delete sx={{ color: 'red' }}/>}
           label="Delete"
           onClick={() => handleDelete(Number(params.id))}
-          showInMenu
+          showInMenu={false}
         />,
       ],
     },

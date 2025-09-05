@@ -115,21 +115,20 @@ export default function UserGrid() {
       field: 'actions',
       headerName: 'Actions',
       type: 'actions',
-      width: 100,
+      width: 120,
       getActions: (params) => [
         <GridActionsCellItem
-          icon={<Edit />}
+          icon={<Edit sx={{ color: 'blue' }}/>}
           label="Edit"
           onClick={() => handleEditClick(params.row)}
         />,
         <GridActionsCellItem
-          icon={<Delete />}
+          icon={<Delete sx={{ color: 'red' }}/>}
           label="Delete"
           onClick={() => {
             setSelectedId(Number(params.id));
             setOpenConfirm(true);
           }}
-          showInMenu
         />,
       ],
     },

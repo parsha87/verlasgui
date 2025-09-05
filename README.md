@@ -44,3 +44,48 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+
+
+
+{
+  "id": 1,
+  "sku": "MOTOR-1001",
+  "noLoadCurrent_1": "2.1",
+  "noLoadCurrent_2": "2.2",
+  "noLoadCurrent_3": "2.0",
+  "noLoadCurrentAvg": "2.1",
+  "noLoadWatts": "150",
+  "noLoadVolts": "415",
+  "resistanceCold_1": "5.2",
+  "resistanceCold_2": "5.3",
+  "resistanceCold_3": "5.1",
+  "resistanceColdAvg": "5.2",
+  "ambientTemp": "32",
+  "fullLoadCurrent_1": "6.3",
+  "fullLoadCurrent_2": "6.4",
+  "fullLoadCurrent_3": "6.2",
+  "fullLoadCurrentAvg": "6.3",
+  "fullLoadInput": "1125",
+  "speed": "1450",
+  "voltage": "415",
+  "frequency": "50",
+  "resistanceHot_1": "6.1",
+  "resistanceHot_2": "6.2",
+  "resistanceHot_3": "6.0",
+  "resistanceHotAvg": "6.1",
+  "noLoadCuLoss": "90",
+  "tempRise": "60",
+  "correctedSpeed": "1448",
+  "fullLoadCuLoss": "180",
+  "statorOutput": "900",
+  "slip": "50",
+  "slipPercent": "3.33",
+  "rotorOutput": "870",
+  "motorOutput": "880",
+  "motorEfficiency": "78.22",
+  "powerFactor": "0.86",
+  "createdBy": "testuser",
+  "createdAt": "2025-07-25T11:52:09.198Z"
+}
